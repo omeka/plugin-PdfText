@@ -42,12 +42,12 @@ class PdfTextPlugin extends Omeka_Plugin_AbstractPlugin
         // Don't install if the pdftotext command doesn't exist.
         // See: http://stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script
         if ((int) shell_exec('hash pdftotext 2>&- || echo 1')) {
-            throw new Omeka_Plugin_Exception(__('The pdftotext command-line utility ' 
+            throw new Omeka_Plugin_Installer_Exception(__('The pdftotext command-line utility ' 
             . 'is not installed. pdftotext must be installed to install this plugin.'));
         }
         // Don't install if a PDF element set already exists.
         if ($this->_db->getTable('ElementSet')->findByName(self::ELEMENT_SET_NAME)) {
-            throw new Omeka_Plugin_Exception(__('An element set by the name "%s" already ' 
+            throw new Omeka_Plugin_Installer_Exception(__('An element set by the name "%s" already ' 
             . 'exists. You must delete that element set to install this plugin.', self::ELEMENT_SET_NAME));
         }
         insert_element_set(
