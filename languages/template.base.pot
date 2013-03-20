@@ -17,3 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. PDF Text element set name 
+msgid "PDF Text"
+msgstr ""
+
+#. PDF Text:Text element name
+msgid "Text"
+msgstr ""
