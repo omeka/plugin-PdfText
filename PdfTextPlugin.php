@@ -114,10 +114,12 @@ class PdfTextPlugin extends Omeka_Plugin_AbstractPlugin
             return;
         }
         // Add the PDF text to the file record.
-        $file->addTextForElement(
-            $file->getElement(self::ELEMENT_SET_NAME, self::ELEMENT_NAME),
-            $this->pdfToText($file->getPath())
-        );
+        $element = $file->getElement(self::ELEMENT_SET_NAME, self::ELEMENT_NAME);
+        $text = $this->pdfToText($file->getPath());
+        // pdftotext must return a string to be saved to the element_texts table.
+        if (is_string($text)) {
+            $file->addTextForElement($element, $text);
+        }
     }
 
     /**
