@@ -125,16 +125,31 @@ class PdfTextPlugin extends Omeka_Plugin_AbstractPlugin
             return;
         }
         $file = $args['record'];
+        
+        // Get associated Item
+        $item = get_record_by_id('Item',$file['item_id']);
+
         // Ignore non-PDF files.
         if (!in_array($file->mime_type, $this->_pdfMimeTypes)) {
             return;
         }
-        // Add the PDF text to the file record.
+        // Add the PDF text to the File as well as the Item record.
         $element = $file->getElement(self::ELEMENT_SET_NAME, self::ELEMENT_NAME);
+        $elementItemTypeText = $item->getElement("Item Type Metadata", 'Text');
+
         $text = $this->pdfToText($file->getPath());
         // pdftotext must return a string to be saved to the element_texts table.
         if (is_string($text)) {
+			
+			if(!mb_detect_encoding($text, 'UTF-8', true)) {
+				$text = utf8_encode($text);
+			}
+			
             $file->addTextForElement($element, $text);
+            
+            // Add text to Item Type Metadata:Text
+            $item->addTextForElement($elementItemTypeText, $text);
+            $item->saveElementTexts();
         }
     }
 
