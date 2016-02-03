@@ -39,7 +39,8 @@ class PdfTextPlugin extends Omeka_Plugin_AbstractPlugin
      */
     protected $_options = array(
         // Default to UTF-8
-        'pdf_text_encoding' => 'UTF-8'
+        'pdf_text_encoding' => 'UTF-8',
+        'pdf_app_path' => '/usr/local/bin/pdftotext'
     );
 
     /**
@@ -49,9 +50,10 @@ class PdfTextPlugin extends Omeka_Plugin_AbstractPlugin
     {
         // Don't install if the pdftotext command doesn't exist.
         // See: http://stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script
-        if ((int) shell_exec('hash pdftotext 2>&- || echo 1')) {
+        if ((int) shell_exec('hash /usr/local/bin/pdftotext 2>&- || echo 1')) {
             throw new Omeka_Plugin_Installer_Exception(__('The pdftotext command-line utility '
-            . 'is not installed. pdftotext must be installed to install this plugin.'));
+            . 'is not installed. pdftotext must be installed to install this plugin. This plugin assumes that the app is installed in /usr/local/bin/.'
+            . 'Should that not be the case, update plugins/PdfText/PdfTextPlugin.php with the correct path'));
         }
         // Don't install if a PDF element set already exists.
         if ($this->_db->getTable('ElementSet')->findByName(self::ELEMENT_SET_NAME)) {
@@ -125,7 +127,7 @@ class PdfTextPlugin extends Omeka_Plugin_AbstractPlugin
             return;
         }
         $file = $args['record'];
-        
+
         // Get associated Item
         $item = get_record_by_id('Item',$file['item_id']);
 
@@ -140,13 +142,13 @@ class PdfTextPlugin extends Omeka_Plugin_AbstractPlugin
         $text = $this->pdfToText($file->getPath());
         // pdftotext must return a string to be saved to the element_texts table.
         if (is_string($text)) {
-			
-			if(!mb_detect_encoding($text, 'UTF-8', true)) {
-				$text = utf8_encode($text);
-			}
-			
+
+            if(!mb_detect_encoding($text, 'UTF-8', true)) {
+                $text = utf8_encode($text);
+            }
+
             $file->addTextForElement($element, $text);
-            
+
             // Add text to Item Type Metadata:Text
             $item->addTextForElement($elementItemTypeText, $text);
             $item->saveElementTexts();
@@ -169,7 +171,14 @@ class PdfTextPlugin extends Omeka_Plugin_AbstractPlugin
         }
 
         $path = escapeshellarg($path);
-        return shell_exec("pdftotext $encString $path -");
+        $appPath = get_option('pdf_app_path');
+
+        if(empty($appPath)) {
+            $cmd = 'pdftotext';
+        } else {
+            $cmd = $appPath;
+        }
+        return shell_exec("$cmd $encString $path -");
     }
 
     /**

@@ -13,6 +13,22 @@
             ?>
         </p>
     </div>
+    <div class="field">
+        <div class="two columns alpha">
+            <?php echo $this->formLabel('pdf_app_path', __('Path to PDFtoText app')); ?>
+        </div>
+        <div class="inputs five columns omega">
+            <?php echo $this->formText('pdf_app_path', get_option('pdf_app_path'), array('placeholder' => 'e.g. /usr/local/bin/pdftotext')); ?>
+
+            <p class="explanation">
+                <?php
+                echo __('On some server environments Apache is not aware of the path to the PDFtoText app. '
+                    . 'In order to avoid processing errors, you can specify the full path to the app.') . '<br />'
+                    . '<b>'. __('Important:') . '</b>' . __(' Please make sure full path ends in ') .  '<em>pdftotext</em>.';
+                ?>
+            </p>
+        </div>
+    </div>
     <div id="pdf_text_process_label" class="two columns alpha">
         <label for="pdf_text_process"><?php echo __('Process existing PDF files'); ?></label>
     </div>
