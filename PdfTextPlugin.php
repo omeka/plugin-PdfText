@@ -131,7 +131,7 @@ class PdfTextPlugin extends Omeka_Plugin_AbstractPlugin
     public function pdfToText($path)
     {
         $path = escapeshellarg($path);
-        return shell_exec("pdftotext $path -");
+        return shell_exec("pdftotext -enc UTF-8 $path -");
     }
 
     /**
