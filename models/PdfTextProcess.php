@@ -36,11 +36,12 @@ class PdfTextProcess extends Omeka_Job_AbstractJob
                 $file->deleteElementTextsByElementId(array($textElement->id));
 
                 // Extract the PDF text and add it to the file.
-                $file->addTextForElement(
-                    $textElement,
-                    $pdfTextPlugin->pdfToText(FILES_DIR . '/original/' . $file->filename)
-                );
-                $file->save();
+                $filepath = FILES_DIR . '/original/' . $file->filename;
+                $text = $pdfTextPlugin->pdfToText($filepath);
+                if (isset($text)) {
+                    $file->addTextForElement($textElement, $text);
+                    $file->save();
+                }
 
                 // Prevent memory leaks.
                 release_object($file);
