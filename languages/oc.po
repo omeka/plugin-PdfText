@@ -1,0 +1,62 @@
+# Translation for the PDF Text plugin for Omeka.
+# Copyright (C) 2012 Roy Rosenzweig Center for History and New Media
+# This file is distributed under the same license as the Omeka package.
+# 
+# Translators:
+# Cédric Valmary <cvalmary@yahoo.fr>, 2016
+# Julien Sicot <julien.sicot@gmail.com>, 2013
+# symac <wikitipiac@laposte.net>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Omeka Classic\n"
+"Report-Msgid-Bugs-To: http://github.com/omeka/plugin-PdfText/issues\n"
+"POT-Creation-Date: 2013-02-04 21:49-0500\n"
+"PO-Revision-Date: 2013-04-01 20:24+0000\n"
+"Last-Translator: Cédric Valmary <cvalmary@yahoo.fr>, 2016\n"
+"Language-Team: Occitan (post 1500) (http://www.transifex.com/omeka/omeka/language/oc/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: oc\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. PDF Text element set name
+msgid "PDF Text"
+msgstr "PDF Text"
+
+#. PDF Text:Text element name
+msgid "Text"
+msgstr "Tèxte"
+
+#: PdfTextPlugin.php:45
+msgid ""
+"The pdftotext command-line utility is not installed. pdftotext must be "
+"installed to install this plugin."
+msgstr "L'utilitari en linha de comanda \"pdftotext\" es pas installat. Aqueste darrièr deu èsser installat per poder utilizar aqueste plugin."
+
+#: PdfTextPlugin.php:50
+#, php-format
+msgid ""
+"An element set by the name \"%s\" already exists. You must delete that "
+"element set to install this plugin."
+msgstr "Un grop d'elements que pòrta lo nom \"%s\" existís ja. Vos cal suprimir aqueste grop d'elements per installar lo plugin."
+
+#: views/admin/plugins/pdf-text-config-form.php:3
+msgid "Process existing PDF files"
+msgstr "Tractar los fichièrs PDF existents"
+
+#: views/admin/plugins/pdf-text-config-form.php:9
+msgid ""
+"This plugin enables searching on PDF files by extracting their texts and "
+"saving them to their file records. This normally happens automatically, but "
+"there are times when you'll want to extract text from all PDF files that "
+"already exist in your Omeka repository, like when first installing this "
+"plugin. Check the box below and submit this form to run the text extraction "
+"process, which may take some time to finish."
+msgstr "Aqueste plugin permet de rercercar dins los fichièrs PDF, en extraient lo contengut textual dels documents e en lo salvant dins la notícia descriptiva del fichièr. Aquesta operacion es realizada automaticament, mas pòt arribar que volgatz extraire lo tèxte de totes los PDF presents dins vòstre archiu, en una sol còp. Al moment de l'installacion del plugin per exemple. Marcatz la casa çaijós e validatz lo formulari per executar lo processus d'extraccion, que pòt èsser un pauc long per un archiu que conten fòrça PDF."
+
+#: views/admin/plugins/pdf-text-config-form.php:25
+msgid ""
+"This plugin does not support processing of PDF files that are stored "
+"remotely. Processing existing PDF files has been disabled."
+msgstr "Aqueste plugin permet pas de tractar los fichièrs PDF albergats sus un servidor distant. Lo tractament dels fichièrs existents es estat desactivat."

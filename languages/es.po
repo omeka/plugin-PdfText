@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the Omeka package.
 # 
 # Translators:
-# rubenalcaraz <rubenalcarazmartinez@gmail.com>, 2013
+# Darío Hereñú, 2014
+# Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: Omeka\n"
-"Report-Msgid-Bugs-To: https://github.com/omeka/Omeka/issues\n"
+"Project-Id-Version: Omeka Classic\n"
+"Report-Msgid-Bugs-To: http://github.com/omeka/plugin-PdfText/issues\n"
 "POT-Creation-Date: 2013-02-04 21:49-0500\n"
-"PO-Revision-Date: 2013-04-13 09:44+0000\n"
-"Last-Translator: rubenalcaraz <rubenalcarazmartinez@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/omeka/language/es/)\n"
+"PO-Revision-Date: 2013-04-01 20:24+0000\n"
+"Last-Translator: Darío Hereñú, 2014\n"
+"Language-Team: Spanish (http://www.transifex.com/omeka/omeka/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +21,7 @@ msgstr ""
 
 #. PDF Text element set name
 msgid "PDF Text"
-msgstr "PDF Text"
+msgstr "Texto PDF"
 
 #. PDF Text:Text element name
 msgid "Text"
@@ -57,4 +58,4 @@ msgstr "Este plugin permite buscar en archivos PDF mediante la extracción de su
 msgid ""
 "This plugin does not support processing of PDF files that are stored "
 "remotely. Processing existing PDF files has been disabled."
-msgstr "Este plugin no permite el procesamiento de archivos PDF almacenados en remoto. El procesamiento de archivos PDF existentes ha sido cancelado."
+msgstr "Este plugin no permite el procesamiento de archivos PDF almacenados remotamente. El procesamiento de archivos PDF existentes ha sido cancelado."

@@ -1,0 +1,61 @@
+# Translation for the PDF Text plugin for Omeka.
+# Copyright (C) 2012 Roy Rosenzweig Center for History and New Media
+# This file is distributed under the same license as the Omeka package.
+# 
+# Translators:
+# HadjaLSI <grebenkina007@mail.ru>, 2013
+# Mikhail Shvartsman <Shvar@rsl.ru>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: Omeka Classic\n"
+"Report-Msgid-Bugs-To: http://github.com/omeka/plugin-PdfText/issues\n"
+"POT-Creation-Date: 2013-02-04 21:49-0500\n"
+"PO-Revision-Date: 2013-04-01 20:24+0000\n"
+"Last-Translator: Mikhail Shvartsman <Shvar@rsl.ru>, 2014\n"
+"Language-Team: Russian (http://www.transifex.com/omeka/omeka/language/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#. PDF Text element set name
+msgid "PDF Text"
+msgstr "Текст в формате PDF"
+
+#. PDF Text:Text element name
+msgid "Text"
+msgstr "Текст"
+
+#: PdfTextPlugin.php:45
+msgid ""
+"The pdftotext command-line utility is not installed. pdftotext must be "
+"installed to install this plugin."
+msgstr "Программа pdftotext не установлена. Она должна быть установлена для того, чтобы установить плагин конвертирования из формата PDF в txt."
+
+#: PdfTextPlugin.php:50
+#, php-format
+msgid ""
+"An element set by the name \"%s\" already exists. You must delete that "
+"element set to install this plugin."
+msgstr "Набор элементов \"%s\" уже существует. Вы должны удалить этот набор элементов для установки плагина. "
+
+#: views/admin/plugins/pdf-text-config-form.php:3
+msgid "Process existing PDF files"
+msgstr "Обработка существующих PDF файлов. "
+
+#: views/admin/plugins/pdf-text-config-form.php:9
+msgid ""
+"This plugin enables searching on PDF files by extracting their texts and "
+"saving them to their file records. This normally happens automatically, but "
+"there are times when you'll want to extract text from all PDF files that "
+"already exist in your Omeka repository, like when first installing this "
+"plugin. Check the box below and submit this form to run the text extraction "
+"process, which may take some time to finish."
+msgstr "Плагин позволит осуществить поиск внутри PDF файлов путём извлечения текста, сохраняя их в файлах. Обычно, эта функция автоматическая, но иногда, вы можете сами извлечь текст из всех PDF файлов уже присутствующих в архиве ОМЕКА, подобно тому как вы в первый раз устанавливали этот плагин. Поставьте внизу галочку и запустите процесс извлечения текста, что займёт некоторое время. "
+
+#: views/admin/plugins/pdf-text-config-form.php:25
+msgid ""
+"This plugin does not support processing of PDF files that are stored "
+"remotely. Processing existing PDF files has been disabled."
+msgstr "Данный плагин не поддерживает обработку PDF файлов, хранящихся удалённо. Обработка файлов PDF была отключена. "

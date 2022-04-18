@@ -1,0 +1,61 @@
+# Translation for the PDF Text plugin for Omeka.
+# Copyright (C) 2012 Roy Rosenzweig Center for History and New Media
+# This file is distributed under the same license as the Omeka package.
+# 
+# Translators:
+# yennylin <yennylin1234@gmail.com>, 2014
+# Hong Zhang <zhangh@unlv.nevada.edu>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Omeka Classic\n"
+"Report-Msgid-Bugs-To: http://github.com/omeka/plugin-PdfText/issues\n"
+"POT-Creation-Date: 2013-02-04 21:49-0500\n"
+"PO-Revision-Date: 2013-04-01 20:24+0000\n"
+"Last-Translator: yennylin <yennylin1234@gmail.com>, 2014\n"
+"Language-Team: Chinese (Taiwan) (http://www.transifex.com/omeka/omeka/language/zh_TW/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. PDF Text element set name
+msgid "PDF Text"
+msgstr "PDF文本"
+
+#. PDF Text:Text element name
+msgid "Text"
+msgstr "文本"
+
+#: PdfTextPlugin.php:45
+msgid ""
+"The pdftotext command-line utility is not installed. pdftotext must be "
+"installed to install this plugin."
+msgstr "沒有安裝pdftotext命令行工具。在安裝本外掛之前必須先安裝pdftotext。"
+
+#: PdfTextPlugin.php:50
+#, php-format
+msgid ""
+"An element set by the name \"%s\" already exists. You must delete that "
+"element set to install this plugin."
+msgstr "名為\"%s\"的元素集已經存在。你必須刪除那個元素集才能安裝這個外掛。"
+
+#: views/admin/plugins/pdf-text-config-form.php:3
+msgid "Process existing PDF files"
+msgstr "處理現有的PDF文件。"
+
+#: views/admin/plugins/pdf-text-config-form.php:9
+msgid ""
+"This plugin enables searching on PDF files by extracting their texts and "
+"saving them to their file records. This normally happens automatically, but "
+"there are times when you'll want to extract text from all PDF files that "
+"already exist in your Omeka repository, like when first installing this "
+"plugin. Check the box below and submit this form to run the text extraction "
+"process, which may take some time to finish."
+msgstr "這個外掛透過擷取PDF文字並儲存在檔案紀錄中，所以可以搜尋PDF檔案。通常這是自動發生的，但是有時你會從Omeka資料庫中所有的PDF檔案中擷取文字，例如第一次安裝這個外掛時。勾選下面的檢核框並提交表單來運行文字擷取處理，這可能會需要一些時間來完成。"
+
+#: views/admin/plugins/pdf-text-config-form.php:25
+msgid ""
+"This plugin does not support processing of PDF files that are stored "
+"remotely. Processing existing PDF files has been disabled."
+msgstr "這個外掛不支援處理遠端儲存的PDF檔案。處理既存的PDF檔案已被停止。"

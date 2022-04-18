@@ -1,0 +1,61 @@
+# Translation for the PDF Text plugin for Omeka.
+# Copyright (C) 2012 Roy Rosenzweig Center for History and New Media
+# This file is distributed under the same license as the Omeka package.
+# 
+# Translators:
+# Alfio Squatrito <info@lswebagency.it>, 2014
+# Daniele Binaghi, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Omeka Classic\n"
+"Report-Msgid-Bugs-To: http://github.com/omeka/plugin-PdfText/issues\n"
+"POT-Creation-Date: 2013-02-04 21:49-0500\n"
+"PO-Revision-Date: 2013-04-01 20:24+0000\n"
+"Last-Translator: Daniele Binaghi, 2018\n"
+"Language-Team: Italian (http://www.transifex.com/omeka/omeka/language/it/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. PDF Text element set name
+msgid "PDF Text"
+msgstr "Documento PDF"
+
+#. PDF Text:Text element name
+msgid "Text"
+msgstr "Testo"
+
+#: PdfTextPlugin.php:45
+msgid ""
+"The pdftotext command-line utility is not installed. pdftotext must be "
+"installed to install this plugin."
+msgstr "L'utilità a riga di comando pdftotext non è installata. pdftotext deve essere installata per poter installare questo plugin."
+
+#: PdfTextPlugin.php:50
+#, php-format
+msgid ""
+"An element set by the name \"%s\" already exists. You must delete that "
+"element set to install this plugin."
+msgstr "Un set di elementi con nome %s risulta essere già esistente. Devi cancellare quel set per installare questo plugin."
+
+#: views/admin/plugins/pdf-text-config-form.php:3
+msgid "Process existing PDF files"
+msgstr "Elabora file PDF esistenti"
+
+#: views/admin/plugins/pdf-text-config-form.php:9
+msgid ""
+"This plugin enables searching on PDF files by extracting their texts and "
+"saving them to their file records. This normally happens automatically, but "
+"there are times when you'll want to extract text from all PDF files that "
+"already exist in your Omeka repository, like when first installing this "
+"plugin. Check the box below and submit this form to run the text extraction "
+"process, which may take some time to finish."
+msgstr "Questo plugin permette la ricerca in file PDF estraendo il testo in essi contenuto e salvandolo nei record. Normalmente il processo avviene automaticamente, ma ci sono occasione in cui potresti decidere di estrarre testo dai file PDF che esistono già nel tuo archvio Omeka, come per esempio quando si installa per la prima volta questo plugin. Seleziona la casella qui sotto e invia questo modulo per avviare l'estrazione del testo, che potrebbe richiedere del tempo per l'esecuzione."
+
+#: views/admin/plugins/pdf-text-config-form.php:25
+msgid ""
+"This plugin does not support processing of PDF files that are stored "
+"remotely. Processing existing PDF files has been disabled."
+msgstr "Il plugin non supporta l'elaborazione di file PDF remoti. L'elaborazione dei file PDF esistenti è stata disabilitata."

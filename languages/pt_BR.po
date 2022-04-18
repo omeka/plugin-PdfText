@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the Omeka package.
 # 
 # Translators:
-# Carlos Eduardo Maciel <carlosmaciel1@gmail.com>, 2013
+# Carlos Eduardo Maciel <carlosmaciel1@gmail.com>, 2013,2017
 msgid ""
 msgstr ""
-"Project-Id-Version: Omeka\n"
-"Report-Msgid-Bugs-To: https://github.com/omeka/Omeka/issues\n"
+"Project-Id-Version: Omeka Classic\n"
+"Report-Msgid-Bugs-To: http://github.com/omeka/plugin-PdfText/issues\n"
 "POT-Creation-Date: 2013-02-04 21:49-0500\n"
-"PO-Revision-Date: 2013-04-15 13:26+0000\n"
-"Last-Translator: Carlos Eduardo Maciel <carlosmaciel1@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/omeka/language/pt_BR/)\n"
+"PO-Revision-Date: 2013-04-01 20:24+0000\n"
+"Last-Translator: Carlos Eduardo Maciel <carlosmaciel1@gmail.com>, 2013,2017\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/omeka/omeka/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,7 +41,7 @@ msgstr "Um set de elemento com o nome \"%s\" já existe. Você precisa apagar es
 
 #: views/admin/plugins/pdf-text-config-form.php:3
 msgid "Process existing PDF files"
-msgstr "Processar arquivos existentes de PDF"
+msgstr "Processar arquivos de PDF existentes "
 
 #: views/admin/plugins/pdf-text-config-form.php:9
 msgid ""
