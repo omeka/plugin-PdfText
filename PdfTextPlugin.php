@@ -62,7 +62,10 @@ class PdfTextPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookUninstall()
     {
         // Delete the PDF element set.
-        $this->_db->getTable('ElementSet')->findByName(self::ELEMENT_SET_NAME)->delete();
+        $elementSet = $this->_db->getTable('ElementSet')->findByName(self::ELEMENT_SET_NAME);
+        if ($elementSet) {
+            $elementSet->delete();
+        }
     }
 
     /**
