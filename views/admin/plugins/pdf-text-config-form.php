@@ -4,7 +4,7 @@
     </div>
     <div class="inputs five columns omega">
         <p class="explanation">
-        <?php 
+        <?php
         echo __(
             'This plugin enables searching on PDF files by extracting '
             . 'their texts and saving them to their file records. This '
@@ -32,11 +32,11 @@
     </div>
 </div>
 
-<h3><?php echo __('Extract PDF Metadata'); ?></h3>
+<h3><?php echo __('Extract PDF metadata'); ?></h3>
 <p><?php echo __(
     'Check the boxes below to extract metadata fields from each '
     . 'PDF\'s embedded information using pdfinfo and save them to the '
-    . 'corresponding Dublin Core fields. Once enabled, this happens '
+    . 'corresponding Dublin Core fields of the file. Once enabled, this happens '
     . 'automatically for new uploads. To process existing PDF files, '
     . 'run the process above.'); ?></p>
 <?php foreach ($this->pdfinfo_mappings as $mapping): ?>
