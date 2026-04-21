@@ -25,6 +25,23 @@ class PdfTextPlugin extends Omeka_Plugin_AbstractPlugin
         'before_save_file',
     );
 
+    protected $_pdfinfoMappings = [
+        [
+            'pdfinfo_field' => 'Title',
+            'element_set'   => 'Dublin Core',
+            'element'       => 'Title',
+            'option'        => 'pdftext_extract_title',
+            'label'         => 'Extract title',
+        ],
+        [
+            'pdfinfo_field' => 'Author',
+            'element_set'   => 'Dublin Core',
+            'element'       => 'Creator',
+            'option'        => 'pdftext_extract_creator',
+            'label'         => 'Extract creator',
+        ],
+    ];
+
     protected $_pdfMimeTypes = array(
         'application/pdf',
         'application/x-pdf',
@@ -82,9 +99,17 @@ class PdfTextPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookConfigForm()
     {
+        $pdfinfoOptions = [];
+        foreach ($this->_pdfinfoMappings as $mapping) {
+            $pdfinfoOptions[$mapping['option']] = (bool) get_option($mapping['option']);
+        }
         echo get_view()->partial(
-            'plugins/pdf-text-config-form.php', 
-            array('valid_storage_adapter' => $this->isValidStorageAdapter())
+            'plugins/pdf-text-config-form.php',
+            [
+                'valid_storage_adapter' => $this->isValidStorageAdapter(),
+                'pdfinfo_mappings' => $this->_pdfinfoMappings,
+                'pdfinfo_options' => $pdfinfoOptions,
+            ]
         );
     }
 
@@ -93,6 +118,9 @@ class PdfTextPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookConfig()
     {
+        foreach ($this->_pdfinfoMappings as $mapping) {
+            set_option($mapping['option'], (int) ($_POST[$mapping['option']] ?? false));
+        }
         // Run the text extraction process if directed to do so.
         if ($_POST['pdf_text_process'] && $this->isValidStorageAdapter()) {
             Zend_Registry::get('bootstrap')->getResource('jobs')
@@ -117,12 +145,14 @@ class PdfTextPlugin extends Omeka_Plugin_AbstractPlugin
             return;
         }
         // Add the PDF text to the file record.
+        $path = $file->getPath();
         $element = $file->getElement(self::ELEMENT_SET_NAME, self::ELEMENT_NAME);
-        $text = $this->pdfToText($file->getPath());
+        $text = $this->pdfToText($path);
         // pdftotext must return a string to be saved to the element_texts table.
         if (is_string($text)) {
             $file->addTextForElement($element, $text);
         }
+        $this->addPdfInfo($file);
     }
 
     /**
@@ -135,6 +165,62 @@ class PdfTextPlugin extends Omeka_Plugin_AbstractPlugin
     {
         $path = escapeshellarg($path);
         return shell_exec("pdftotext -enc UTF-8 $path -");
+    }
+
+    /**
+     * Add pdfinfo metadata fields to a file record if not already present.
+     *
+     * @param object $file
+     * @return bool
+     */
+    public function addPdfInfo($file)
+    {
+        $enabledMappings = array_filter($this->_pdfinfoMappings, function($mapping) {
+            return (bool) get_option($mapping['option']);
+        });
+        // Skip the shell exec if no pdfinfo options are enabled.
+        if (empty($enabledMappings)) {
+            return false;
+        }
+        $info = $this->getPdfInfo($file->getPath());
+        if (!$info) {
+            return false;
+        }
+        $added = false;
+        foreach ($enabledMappings as $mapping) {
+            if (!isset($info[$mapping['pdfinfo_field']])) {
+                continue;
+            }
+            $element = $file->getElement($mapping['element_set'], $mapping['element']);
+            if (!empty($file->getElementTextsByRecord($element))) {
+                continue;
+            }
+            $file->addTextForElement($element, $info[$mapping['pdfinfo_field']]);
+            $added = true;
+        }
+        return $added;
+    }
+
+    /**
+     * Get metadata from a PDF file using pdfinfo.
+     *
+     * @param string $path
+     * @return array|null
+     */
+    public function getPdfInfo($path)
+    {
+        $path = escapeshellarg($path);
+        $output = shell_exec("pdfinfo -enc UTF-8 $path");
+        if ($output === null) {
+            return null;
+        }
+        $info = [];
+        foreach (explode("\n", $output) as $line) {
+            if (preg_match('/^([^:]+):\s+(.+)/', $line, $matches)) {
+                $info[trim($matches[1])] = trim($matches[2]);
+            }
+        }
+        return $info;
     }
 
     /**

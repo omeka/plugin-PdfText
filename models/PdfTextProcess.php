@@ -37,9 +37,20 @@ class PdfTextProcess extends Omeka_Job_AbstractJob
 
                 // Extract the PDF text and add it to the file.
                 $filepath = FILES_DIR . '/original/' . $file->filename;
+                $saved = false;
+
                 $text = $pdfTextPlugin->pdfToText($filepath);
                 if (isset($text)) {
                     $file->addTextForElement($textElement, $text);
+                    $saved = true;
+                }
+
+                if ($pdfTextPlugin->addPdfInfo($file)) {
+                    $saved = true;
+                }
+
+                // Only save if something was staged to avoid unnecessary writes.
+                if ($saved) {
                     $file->save();
                 }
 
