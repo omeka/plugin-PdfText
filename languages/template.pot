@@ -25,13 +25,13 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: PdfTextPlugin.php:45
+#: PdfTextPlugin.php:62
 msgid ""
 "The pdftotext command-line utility is not installed. pdftotext must be "
 "installed to install this plugin."
 msgstr ""
 
-#: PdfTextPlugin.php:50
+#: PdfTextPlugin.php:67
 #, php-format
 msgid ""
 "An element set by the name \"%s\" already exists. You must delete that "
@@ -56,4 +56,16 @@ msgstr ""
 msgid ""
 "This plugin does not support processing of PDF files that are stored "
 "remotely. Processing existing PDF files has been disabled."
+msgstr ""
+
+#: views/admin/plugins/pdf-text-config-form.php:35
+msgid "Extract PDF metadata"
+msgstr ""
+
+#: views/admin/plugins/pdf-text-config-form.php:37
+msgid ""
+"Check the boxes below to extract metadata fields from each PDF's embedded "
+"information using pdfinfo and save them to the corresponding Dublin Core "
+"fields of the file. Once enabled, this happens automatically for new "
+"uploads. To process existing PDF files, run the process above."
 msgstr ""

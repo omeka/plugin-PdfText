@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[omeka.plugin-pdftext]
+[o:omeka:p:omeka:r:plugin-pdftext]
 file_filter = languages/<lang>.po
 source_file = languages/template.pot
 source_lang = en
